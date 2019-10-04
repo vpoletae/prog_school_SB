@@ -36,7 +36,6 @@ class LinkedList:
             if node.value == val:
                 matched_list.append(node.value)
             node = node.next
-        # print(matched_list)
         return matched_list
 
     def delete(self, val, all=False):
@@ -118,5 +117,5 @@ s_list.add_in_tail(Node(128))
 # s_list.clean()
 # length = s_list.len()
 # print(length)
-s_list.insert(128, 1000)
-s_list.print_all_nodes()
+# s_list.insert(128, 1000)
+# s_list.print_all_nodes()
