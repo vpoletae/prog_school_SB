@@ -2,17 +2,6 @@ import unittest
 import random
 from Linked_list import Node, LinkedList
 
-n1 = Node(15)
-n2 = Node(16)
-n3 = Node(17)
-n1.next = n2
-n2.next = n3
-linked_list = LinkedList()
-linked_list.add_in_tail(n1)
-linked_list.add_in_tail(n2)
-linked_list.add_in_tail(n3)
-test_obj = linked_list
-
 class Test_Linked_list(unittest.TestCase):
     def setUp(self):
         self.obj = test_obj
