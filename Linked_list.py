@@ -77,7 +77,7 @@ class LinkedList:
             previous_node.next = None
         self.head = None
 
-    def len(self):
+    def len_(self):
         node = self.head
         counter = int()
         while node != None:
@@ -103,19 +103,10 @@ class LinkedList:
         else:
             pass
 
-n1 = Node(12)
-n2 = Node(55)
-n3 = Node(55)
-s_list = LinkedList()
-s_list.add_in_tail(n1)
-s_list.add_in_tail(n2)
-s_list.add_in_tail(n3)
-s_list.add_in_tail(Node(128))
-# s_list.print_all_nodes()
-# s_list.find_all(55)
-# s_list.delete(55, all=True)
-# s_list.clean()
-# length = s_list.len()
-# print(length)
-# s_list.insert(128, 1000)
-# s_list.print_all_nodes()
+    def convert_to_unlinked_list(self):
+        node = self.head
+        simple_list = []
+        while node != None:
+            simple_list.append(node.value)
+            node = node.next
+        return simple_list
