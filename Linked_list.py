@@ -110,3 +110,19 @@ class LinkedList:
             simple_list.append(node.value)
             node = node.next
         return simple_list
+
+n1 = Node(12)
+n2 = Node(55)
+n3 = Node(55)
+s_list = LinkedList()
+s_list.add_in_tail(n1)
+s_list.add_in_tail(n2)
+s_list.add_in_tail(n3)
+s_list.add_in_tail(Node(128))
+s_list.add_in_tail(Node(12))
+
+list_ = s_list.find_all(55)
+print(list_)
+
+list_ = s_list.find_all(12)
+print(list_)
