@@ -1,7 +1,7 @@
 from Linked_list import Node, LinkedList
 
 def linked_list_compare(obj_1, obj_2):
-    if obj_1.len_() == obj_2.len_():
+    if obj_1.len() == obj_2.len():
         obj_1_list = []
         node = obj_1.head
         while node is not None:

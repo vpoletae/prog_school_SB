@@ -77,7 +77,7 @@ class LinkedList:
             previous_node.next = None
         self.head = None
 
-    def len_(self):
+    def len(self):
         node = self.head
         counter = int()
         while node != None:

@@ -38,9 +38,9 @@ class Test_Linked_list(unittest.TestCase):
     #     self.assertEqual(self.obj.clean(), None)
 
     def test_len(self):
-        self.assertTrue(self.obj.len_())
+        self.assertTrue(self.obj.len())
         unlinked_list = self.obj.convert_to_unlinked_list()
-        self.assertEqual(self.obj.len_(), len(unlinked_list))
+        self.assertEqual(self.obj.len(), len(unlinked_list))
 
     def test_insert(self):
         unlinked_list_before = self.obj.convert_to_unlinked_list()
