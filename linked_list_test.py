@@ -5,12 +5,14 @@ from Linked_list import Node, LinkedList
 n1 = Node(15)
 n2 = Node(16)
 n3 = Node(17)
+n4 = Node(16)
 n1.next = n2
 n2.next = n3
 linked_list = LinkedList()
 linked_list.add_in_tail(n1)
 linked_list.add_in_tail(n2)
 linked_list.add_in_tail(n3)
+linked_list.add_in_tail(n4)
 test_obj = linked_list
 
 class Test_Linked_list(unittest.TestCase):
@@ -25,6 +27,8 @@ class Test_Linked_list(unittest.TestCase):
         self.assertEqual(self.obj.find(random_number).value, random_number)
 
     def test_find_all(self):
+        to_find = 16
+        to_be_found = [n2, n4]
         unlinked_list = self.obj.convert_to_unlinked_list()
         random_index = random.randint(0, (len(unlinked_list)-1))
         random_number = unlinked_list[random_index]
@@ -34,6 +38,7 @@ class Test_Linked_list(unittest.TestCase):
                 counter += 1
             else:
                 pass
+        self.assertTrue(self.obj.find_all(to_find), to_be_found)
         self.assertTrue(self.obj.find_all(random_number))
         self.assertTrue(isinstance(self.obj.find_all(random_number), list))
         self.assertEqual(len(self.obj.find_all(random_number)), counter)
