@@ -58,17 +58,23 @@ class LinkedList:
                 node = node.next
         elif all == True:
             while node != None:
-                if node.value == val:
-                    if node == self.head:
+                if node == self.head:
+                    if node.value == val:
                         self.head = node.next
-                    elif node == self.tail:
+                    previous_node = node
+                    node = node.next
+                elif node == self.tail:
+                    if node.value == val:
                         self.tail = previous_node
-                    else:
-                        node = node.next
-                        previous_node.next = node
+                        previous_node.next = None
                         break
-                previous_node = node
-                node = node.next
+                else:
+                    if node.value == val:
+                        previous_node.next = node.next
+                        node = node.next
+                    else:
+                        previous_node = node
+                        node = node.next
         else:
             pass
 
