@@ -68,6 +68,7 @@ class LinkedList:
                         self.tail = previous_node
                         previous_node.next = None
                         break
+                    node = node.next
                 else:
                     if node.value == val:
                         previous_node.next = node.next
