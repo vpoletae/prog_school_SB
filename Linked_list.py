@@ -49,6 +49,7 @@ class LinkedList:
                         break
                     elif node == self.tail:
                         self.tail = previous_node
+                        previous_node.next = None
                         break
                     else:
                         node = node.next
@@ -98,23 +99,24 @@ class LinkedList:
 
     def insert(self, afterNode, newNode):
         node = self.head
-        if afterNode and newNode:
-            if newNode != None:
-                newNode = Node(newNode)
-                if afterNode != None:
-                    afterNode = self.find(afterNode)
-                    if afterNode == self.tail:
-                        afterNode.next = newNode
-                        self.tail = newNode
+        if newNode:
+            new_Node = Node(newNode)
+            if afterNode:
+                after_Node = self.find(afterNode)
+                if after_Node:
+                    if after_Node == self.tail:
+                        after_Node.next = new_Node
+                        self.tail = new_Node
                     else:
-                        next_afterNode = afterNode.next
-                        afterNode.next = newNode
-                        newNode.next = next_afterNode
+                        next_afterNode = after_Node.next
+                        after_Node.next = new_Node
+                        new_Node.next = next_afterNode
                 else:
-                    newNode = self.head
-                    newNode.next = node
+                    self.tail.next = new_Node
+                    self.tail = new_Node
             else:
-                pass
+                self.head = new_Node
+                new_Node.next = node
         else:
             pass
 
