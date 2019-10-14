@@ -50,6 +50,58 @@ class Test_Linked_list(unittest.TestCase):
         unlinked_list_after = self.obj.convert_to_unlinked_list()
         self.assertNotEqual(unlinked_list_before, unlinked_list_after)
 
+    def test_delete_first(self):
+        n1 = Node(15)
+        n2 = Node(16)
+        n3 = Node(17)
+        n4 = Node(16)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.delete(n1.value)
+        self.assertNotIn(n1.value, linked_list.convert_to_unlinked_list())
+        self.assertEqual(n2, linked_list.head)
+
+    def test_delete_last(self):
+        n1 = Node(16)
+        n2 = Node(16)
+        n3 = Node(17)
+        n4 = Node(15)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.delete(n4.value)
+        self.assertNotIn(n4.value, linked_list.convert_to_unlinked_list())
+        self.assertEqual(n3, linked_list.tail)
+
+    def test_delete_none(self):
+        n1 = Node(16)
+        n2 = Node(16)
+        n3 = Node(17)
+        n4 = Node(15)
+        node_none_value = 1000
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.delete(node_none_value)
+        self.assertEqual(n1, linked_list.head)
+        self.assertEqual(n4, linked_list.tail)
+
     # def test_clean(self):
     #     self.assertFalse(self.obj.clean())
     #     self.assertEqual(self.obj.clean(), None)
