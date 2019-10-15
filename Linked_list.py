@@ -129,17 +129,3 @@ class LinkedList:
             simple_list.append(node.value)
             node = node.next
         return simple_list
-
-n1 = Node(15)
-# n2 = Node(16)
-# n3 = Node(17)
-# n4 = Node(16)
-# n1.next = n2
-# n2.next = n3
-linked_list = LinkedList()
-linked_list.add_in_tail(n1)
-# linked_list.add_in_tail(n2)
-# linked_list.add_in_tail(n3)
-# linked_list.add_in_tail(n4)
-linked_list.delete(15)
-linked_list.print_all_nodes()
