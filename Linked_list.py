@@ -50,8 +50,12 @@ class LinkedList:
                         self.tail = None
                         break
                     elif node == self.tail:
-                        self.tail = previous_node
-                        previous_node.next = None
+                        if previous_node == self.head:
+                            self.tail = None
+                            previous_node.next = None
+                        else:
+                            self.tail = previous_node
+                            previous_node.next = None
                         break
                     else:
                         node = node.next

@@ -114,6 +114,19 @@ class Test_Linked_list(unittest.TestCase):
         self.assertEqual(None, linked_list.head)
         self.assertEqual(None, linked_list.tail)
 
+    def test_delete_one_of_two(self):
+        n1 = Node(15)
+        n2 = Node(17)
+        n1.next = n2
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.delete(n2.value)
+        len_after = linked_list.len()
+        self.assertEqual(1, len_after)
+        self.assertEqual(n1, linked_list.head)
+        self.assertEqual(None, linked_list.tail)
+
     # def test_clean(self):
     #     self.assertFalse(self.obj.clean())
     #     self.assertEqual(self.obj.clean(), None)
