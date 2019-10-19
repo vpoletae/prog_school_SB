@@ -125,7 +125,7 @@ class Test_Linked_list(unittest.TestCase):
         len_after = linked_list.len()
         self.assertEqual(1, len_after)
         self.assertEqual(n1, linked_list.head)
-        self.assertEqual(None, linked_list.tail)
+        self.assertEqual(n1, linked_list.tail)
 
     # def test_clean(self):
     #     self.assertFalse(self.obj.clean())
