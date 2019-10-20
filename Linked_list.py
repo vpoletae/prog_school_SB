@@ -45,17 +45,17 @@ class LinkedList:
             while node != None:
                 if node.value == val:
                     if node == self.head:
-                        self.head = node.next
-                        self.tail = node.next
-                        node.next = None
-                        break
-                    elif node == self.tail:
-                        if previous_node == self.head:
-                            self.tail = previous_node
-                            previous_node.next = None
+                        if node.next == None:
+                            node = None
+                            self.head = None
+                            self.tail = None
+                            break
                         else:
-                            self.tail = previous_node
-                            previous_node.next = None
+                            self.head = node.next
+                            node = node.next
+                    elif node == self.tail:
+                        self.tail = previous_node
+                        previous_node.next = None
                         break
                     else:
                         node = node.next
@@ -65,24 +65,26 @@ class LinkedList:
                 node = node.next
         elif all == True:
             while node != None:
-                if node == self.head:
-                    if node.value == val:
-                        self.head = node.next
-                    previous_node = node
-                    node = node.next
-                elif node == self.tail:
-                    if node.value == val:
+                if node.value == val:
+                    if node == self.head:
+                        if node.next == None:
+                            node = None
+                            self.head = None
+                            self.tail = None
+                            break
+                        else:
+                            self.head = node.next
+                            node = node.next
+                    elif node == self.tail:
                         self.tail = previous_node
                         previous_node.next = None
                         break
-                    node = node.next
-                else:
-                    if node.value == val:
-                        previous_node.next = node.next
-                        node = node.next
                     else:
-                        previous_node = node
                         node = node.next
+                        previous_node.next = node
+                else:
+                    previous_node = node
+                    node = node.next
         else:
             pass
 

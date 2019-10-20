@@ -127,6 +127,45 @@ class Test_Linked_list(unittest.TestCase):
         self.assertEqual(n1, linked_list.head)
         self.assertEqual(n1, linked_list.tail)
 
+    def test_delete_first_and_last(self):
+        n1 = Node(15)
+        n2 = Node(16)
+        n3 = Node(17)
+        n4 = Node(15)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        len_before = linked_list.len()
+        linked_list.delete(n1.value, True)
+        len_after = linked_list.len()
+        self.assertEqual(4, len_after+2)
+        self.assertEqual(n2, linked_list.head)
+        self.assertEqual(n3, linked_list.tail)
+
+    def test_delete_all_equal(self):
+        n1 = Node(15)
+        n2 = Node(15)
+        n3 = Node(15)
+        n4 = Node(15)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.delete(n1.value, True)
+        len_after = linked_list.len()
+        self.assertEqual(0, len_after)
+        self.assertEqual(None, linked_list.head)
+        self.assertEqual(None, linked_list.tail)
+
     # def test_clean(self):
     #     self.assertFalse(self.obj.clean())
     #     self.assertEqual(self.obj.clean(), None)
