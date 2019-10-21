@@ -200,5 +200,64 @@ class Test_Linked_list(unittest.TestCase):
         self.assertNotEqual(unlinked_list_before, unlinked_list_after)
         self.assertIn(new_node, unlinked_list_after)
 
+    def test_insert_first(self):
+        n1 = Node(15)
+        n2 = Node(16)
+        n3 = Node(17)
+        n4 = Node(15)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.insert(None, 100)
+        self.assertEqual(linked_list.head.value, 100)
+        self.assertEqual(linked_list.tail.value, 15)
+        self.assertNotEqual(n1.value, linked_list.head)
+
+    def test_insert_last(self):
+        n1 = Node(15)
+        n2 = Node(16)
+        n3 = Node(17)
+        n4 = Node(18)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.insert(18, 100)
+        self.assertEqual(linked_list.tail.value, 100)
+        self.assertNotEqual(n4.value, linked_list.tail)
+
+    def test_insert_empty(self):
+        linked_list = LinkedList()
+        linked_list.insert(None, 100)
+        self.assertEqual(linked_list.head.value, 100)
+        self.assertEqual(linked_list.tail.value, 100)
+        self.assertEqual(linked_list.len(), 1)
+
+    def test_insert_repeated(self):
+        n1 = Node(15)
+        n2 = Node(16)
+        n3 = Node(16)
+        n4 = Node(18)
+        n1.next = n2
+        n2.next = n3
+        n3.next = n4
+        linked_list = LinkedList()
+        linked_list.add_in_tail(n1)
+        linked_list.add_in_tail(n2)
+        linked_list.add_in_tail(n3)
+        linked_list.add_in_tail(n4)
+        linked_list.insert(16, 100)
+        self.assertEqual(n2.next.value, 100)
+        # self.assertEqual(n4.value, n2.value)
+
 if __name__ == '__main__':
     unittest.main()

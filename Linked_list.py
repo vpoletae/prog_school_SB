@@ -124,8 +124,13 @@ class LinkedList:
                     self.tail.next = new_Node
                     self.tail = new_Node
             else:
-                self.head = new_Node
-                new_Node.next = node
+                if self.head == None:
+                    self.head = new_Node
+                    self.tail = new_Node
+                    new_Node.next = None
+                else:
+                    self.head = new_Node
+                    new_Node.next = node
         else:
             pass
 
