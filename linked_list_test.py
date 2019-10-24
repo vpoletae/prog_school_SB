@@ -195,7 +195,7 @@ class Test_Linked_list(unittest.TestCase):
         random_index = random.randint(0, (len(unlinked_list_before)-1))
         after_node = unlinked_list_before[random_index]
         new_node = random.randrange(1, 100)
-        test_obj.insert(after_node, new_node)
+        test_obj.insert(Node(after_node), Node(new_node))
         unlinked_list_after = self.obj.convert_to_unlinked_list()
         self.assertNotEqual(unlinked_list_before, unlinked_list_after)
         self.assertIn(new_node, unlinked_list_after)
@@ -213,7 +213,7 @@ class Test_Linked_list(unittest.TestCase):
         linked_list.add_in_tail(n2)
         linked_list.add_in_tail(n3)
         linked_list.add_in_tail(n4)
-        linked_list.insert(None, 100)
+        linked_list.insert(None, Node(100))
         self.assertEqual(linked_list.head.value, 100)
         self.assertEqual(linked_list.tail.value, 15)
         self.assertNotEqual(n1.value, linked_list.head)
@@ -231,16 +231,18 @@ class Test_Linked_list(unittest.TestCase):
         linked_list.add_in_tail(n2)
         linked_list.add_in_tail(n3)
         linked_list.add_in_tail(n4)
-        linked_list.insert(18, 100)
+        linked_list.insert(Node(18), Node(100))
         self.assertEqual(linked_list.tail.value, 100)
         self.assertNotEqual(n4.value, linked_list.tail)
 
     def test_insert_empty(self):
         linked_list = LinkedList()
-        linked_list.insert(None, 100)
+        linked_list.insert(None, Node(100))
         self.assertEqual(linked_list.head.value, 100)
         self.assertEqual(linked_list.tail.value, 100)
         self.assertEqual(linked_list.len(), 1)
+        self.assertEqual(linked_list.head.next, None)
+        self.assertEqual(linked_list.tail.next, None)
 
     def test_insert_repeated(self):
         n1 = Node(15)
@@ -255,7 +257,7 @@ class Test_Linked_list(unittest.TestCase):
         linked_list.add_in_tail(n2)
         linked_list.add_in_tail(n3)
         linked_list.add_in_tail(n4)
-        linked_list.insert(16, 100)
+        linked_list.insert(Node(16), Node(100))
         self.assertEqual(n2.next.value, 100)
         # self.assertEqual(n4.value, n2.value)
 

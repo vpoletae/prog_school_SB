@@ -109,28 +109,27 @@ class LinkedList:
     def insert(self, afterNode, newNode):
         node = self.head
         if newNode:
-            new_Node = Node(newNode)
             if afterNode:
-                after_Node = self.find(afterNode)
+                after_Node = self.find(afterNode.value)
                 if after_Node:
                     if after_Node == self.tail:
-                        after_Node.next = new_Node
-                        self.tail = new_Node
+                        after_Node.next = newNode
+                        self.tail = newNode
                     else:
                         next_afterNode = after_Node.next
-                        after_Node.next = new_Node
-                        new_Node.next = next_afterNode
+                        after_Node.next = newNode
+                        newNode.next = next_afterNode
                 else:
-                    self.tail.next = new_Node
-                    self.tail = new_Node
+                    self.tail.next = newNode
+                    self.tail = newNode
             else:
                 if self.head == None:
-                    self.head = new_Node
-                    self.tail = new_Node
-                    new_Node.next = None
+                    self.head = newNode
+                    self.tail = newNode
+                    newNode.next = None
                 else:
-                    self.head = new_Node
-                    new_Node.next = node
+                    self.head = newNode
+                    newNode.next = node
         else:
             pass
 
