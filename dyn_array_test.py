@@ -239,5 +239,18 @@ class Test_Linked_list(unittest.TestCase):
         self.assertEqual(prev_count, da.count+2)
         self.assertEqual(int(prev_capacity/1.5), da.capacity)
 
+    def test_delete_from_empty(self):
+        da = DynArray()
+        prev_count = da.count
+        prev_capacity = da.capacity
+        raised = False
+        try:
+            da.delete(0)
+        except:
+            raised = True
+        self.assertEqual(raised, True)
+        self.assertEqual(prev_count, da.count)
+        self.assertEqual(prev_capacity, da.capacity)
+
 if __name__ == '__main__':
     unittest.main()
