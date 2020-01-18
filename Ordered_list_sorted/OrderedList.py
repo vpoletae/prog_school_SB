@@ -103,6 +103,7 @@ class OrderedList:
                         self.head = node.next
                         node = node.next
                         node.prev = None
+                        break
                 elif node == self.tail:
                     self.tail = node.prev
                     node.prev.next = None
