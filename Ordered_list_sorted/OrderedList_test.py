@@ -331,6 +331,31 @@ class Test_OrderedList(unittest.TestCase):
         self.assertEqual(ordered_list.find(val_3), None)
         self.assertEqual(ordered_list.len(), 2)
 
+    def del_equal(self):
+        val_1 = 12
+        val_2 = 12
+        val_3 = 12
+        ordered_list = OrderedList(asc=True)
+        ordered_list.add(val_1)
+        ordered_list.add(val_2)
+        ordered_list.add(val_3)
+        ordered_list.delete(12)
+        self.assertEqual(ordered_list.head.value, val_2)
+        self.assertEqual(ordered_list.tail.value, val_3)
+        self.assertEqual(ordered_list.get_all()[0].value, val_2)
+        self.assertEqual(ordered_list.get_all()[1].value, val_3)
+        self.assertEqual(ordered_list.len(), 2)
+
+    def del_one(self):
+        val_1 = 12
+        ordered_list = OrderedList(asc=True)
+        ordered_list.add(val_1)
+        ordered_list.delete(12)
+        self.assertEqual(ordered_list.head, None)
+        self.assertEqual(ordered_list.tail, None)
+        self.assertEqual(ordered_list.get_all(), [])
+        self.assertEqual(ordered_list.len(), 0)
+
     # cleaning block
     def test_clean(self):
         val_1 = 12
