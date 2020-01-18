@@ -90,6 +90,7 @@ class OrderedList:
     def delete(self, val):
         node = self.head
         prev_node = None
+        next_node = None
         while node != None:
             if node.value == val:
                 if node == self.head:
@@ -108,10 +109,12 @@ class OrderedList:
                     node.prev = None
                     break
                 else:
-                    prev_node = node.prev
-                    node = node.next
-                    prev_node.next = node
-                    node.prev = prev_node
+                    next_node = node.next
+                    node.prev = None
+                    node.next = None
+                    prev_node.next = next_node
+                    next_node.prev = prev_node
+                    break
             else:
                 prev_node = node
                 node = node.next

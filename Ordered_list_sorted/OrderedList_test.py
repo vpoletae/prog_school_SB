@@ -279,6 +279,58 @@ class Test_OrderedList(unittest.TestCase):
         self.assertEqual(ordered_list.get_all()[1].value, val_1)
         self.assertEqual(ordered_list.len(), 2)
 
+    def test_delete_middle(self):
+        val_1 = 12
+        val_2 = 55
+        val_3 = 100
+        ordered_list = OrderedList(asc=True)
+        ordered_list.add(val_1)
+        ordered_list.add(val_2)
+        ordered_list.add(val_3)
+        ordered_list.delete(val_2)
+        self.assertEqual(ordered_list.head.value, val_1)
+        self.assertEqual(ordered_list.tail.value, val_3)
+        self.assertEqual(ordered_list.get_all()[0].value, val_1)
+        self.assertEqual(ordered_list.get_all()[1].value, val_3)
+        self.assertEqual(ordered_list.find(val_2), None)
+        self.assertEqual(ordered_list.len(), 2)
+        ordered_list = OrderedList(asc=False)
+        ordered_list.add(val_1)
+        ordered_list.add(val_2)
+        ordered_list.add(val_3)
+        ordered_list.delete(val_2)
+        self.assertEqual(ordered_list.head.value, val_3)
+        self.assertEqual(ordered_list.tail.value, val_1)
+        self.assertEqual(ordered_list.get_all()[0].value, val_3)
+        self.assertEqual(ordered_list.get_all()[1].value, val_1)
+        self.assertEqual(ordered_list.find(val_2), None)
+        self.assertEqual(ordered_list.len(), 2)
+        val_1 = ' a'
+        val_2 = ' с '
+        val_3 = 'b '
+        ordered_list = OrderedStringList(asc=True)
+        ordered_list.add(val_1)
+        ordered_list.add(val_2)
+        ordered_list.add(val_3)
+        ordered_list.delete(val_3)
+        self.assertEqual(ordered_list.head.value, val_1)
+        self.assertEqual(ordered_list.tail.value, val_2)
+        self.assertEqual(ordered_list.get_all()[0].value, val_1)
+        self.assertEqual(ordered_list.get_all()[1].value, val_2)
+        self.assertEqual(ordered_list.find(val_3), None)
+        self.assertEqual(ordered_list.len(), 2)
+        ordered_list = OrderedStringList(asc=False)
+        ordered_list.add(val_1)
+        ordered_list.add(val_2)
+        ordered_list.add(val_3)
+        ordered_list.delete(val_3)
+        self.assertEqual(ordered_list.head.value, val_2)
+        self.assertEqual(ordered_list.tail.value, val_1)
+        self.assertEqual(ordered_list.get_all()[0].value, val_2)
+        self.assertEqual(ordered_list.get_all()[1].value, val_1)
+        self.assertEqual(ordered_list.find(val_3), None)
+        self.assertEqual(ordered_list.len(), 2)
+
     # cleaning block
     def test_clean(self):
         val_1 = 12
