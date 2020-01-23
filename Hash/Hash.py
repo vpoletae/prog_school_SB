@@ -20,8 +20,8 @@ class HashTable:
             return slot
         else:
             counter = int()
-            while not self.slots[slot] == None or \
-                self.slots[slot] == value:
+            while not (self.slots[slot] == None or \
+                self.slots[slot] == value):
                 slot += self.step
                 if slot >= self.size:
                     slot -= self.size
