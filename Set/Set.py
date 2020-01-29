@@ -78,55 +78,48 @@ class PowerSet:
 
     def intersection(self, set2):
         # пересечение текущего множества и set2
+        new_set = self
         slot = 0
         while slot < self.capacity:
             if self.slots[slot] != None:
                 if set2.get(self.slots[slot]):
                     pass
                 else:
-                    set2.remove(self.slots[slot])
+                    new_set.remove(self.slots[slot])
             else:
                 pass
             slot += 1
+        return new_set
+
+    def union(self, set2):
+        # объединение текущего множества и set2
+        new_set = self
         slot = 0
         while slot < set2.capacity:
             if set2.slots[slot] != None:
                 if self.get(set2.slots[slot]):
                     pass
                 else:
-                    set2.remove(set2.slots[slot])
+                    new_set.put(set2.slots[slot])
             else:
                 pass
             slot += 1
-        return set2
-
-    def union(self, set2):
-        # объединение текущего множества и set2
-        slot = 0
-        while slot < self.capacity:
-            if self.slots[slot] != None:
-                if set2.get(self.slots[slot]):
-                    pass
-                else:
-                    set2.put(self.slots[slot])
-            else:
-                pass
-            slot += 1
-        return set2
+        return new_set
 
     def difference(self, set2):
         # разница текущего множества и set2
+        new_set = self
         slot = 0
         while slot < self.capacity:
             if self.slots[slot] != None:
                 if set2.get(self.slots[slot]):
-                    set2.remove(self.slots[slot])
+                    new_set.remove(self.slots[slot])
                 else:
-                    set2.put(self.slots[slot])
+                    pass
             else:
                 pass
             slot += 1
-        return set2
+        return new_set
 
     def issubset(self, set2):
         # возвращает True, если set2 есть

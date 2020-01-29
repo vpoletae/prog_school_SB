@@ -51,7 +51,7 @@ class Test_Set(unittest.TestCase):
         set_new = set1.intersection(set2)
         self.assertEqual(set_new.slots, set_test.slots)
 
-    def test_intersection_not_empty(self):
+    def test_intersection_empty(self):
         set1 = PowerSet()
         set1.put('cat')
         set1.put('dog')
@@ -60,6 +60,17 @@ class Test_Set(unittest.TestCase):
         set2.put('bear')
         set2.put('dragon')
         set2.put('fly')
+        set_test = PowerSet()
+        set_new = set1.intersection(set2)
+        self.assertEqual(set_new.slots, set_test.slots)
+
+    def test_intersection_empty_v2(self):
+        set1 = PowerSet()
+        for i in range(20000):
+            set1.put('cat')
+        set2 = PowerSet()
+        for i in range(20000):
+            set1.put('dog')
         set_test = PowerSet()
         set_new = set1.intersection(set2)
         self.assertEqual(set_new.slots, set_test.slots)
