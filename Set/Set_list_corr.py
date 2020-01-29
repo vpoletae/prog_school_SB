@@ -50,15 +50,14 @@ class PowerSet:
                 united.slots.append(value)
         return united
 
-
     def difference(self, set2):
         # разница текущего множества и set2
-        deducted = self
-        for value in set2.slots:
-            if value in self.slots:
-                deducted.slots.remove(value)
-            else:
+        deducted = PowerSet()
+        for value in self.slots:
+            if value in set2.slots:
                 pass
+            else:
+                deducted.slots.append(value)
         return deducted
 
     def issubset(self, set2):
