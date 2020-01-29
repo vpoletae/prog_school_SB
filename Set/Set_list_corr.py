@@ -32,12 +32,12 @@ class PowerSet:
 
     def intersection(self, set2):
         # пересечение текущего множества и set2
-        intersected = self
+        intersected = PowerSet()
         for value in self.slots:
             if value in set2.slots:
-                pass
+                intersected.slots.append(value)
             else:
-                intersected.slots.remove(value)
+                pass
         return intersected
 
     def union(self, set2):

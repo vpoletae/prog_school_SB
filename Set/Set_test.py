@@ -1,5 +1,5 @@
 import unittest
-from Set import PowerSet
+from Set_list_corr import PowerSet
 
 class Test_Set(unittest.TestCase):
 
