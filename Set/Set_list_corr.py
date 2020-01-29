@@ -42,7 +42,9 @@ class PowerSet:
 
     def union(self, set2):
         # объединение текущего множества и set2
-        united = self
+        united = PowerSet()
+        for value in self.slots:
+            united.slots.append(value)
         for value in set2.slots:
             if value in self.slots:
                 pass
