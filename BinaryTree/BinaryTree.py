@@ -98,6 +98,8 @@ class BST:
                             node_to_del.Parent = None
                     else:
                         self.Root = None
+                        node.RightChild = None
+                        node.LeftChild = None
                 elif node_to_del.LeftChild and node_to_del.RightChild == None:
                     if node_to_del != self.Root:
                         if parent_node.NodeKey <= node_to_del.NodeKey:
