@@ -99,9 +99,10 @@ class Test_BinaryTree(unittest.TestCase):
         binary_tree.DeleteNodeByKey(3)
         self.assertEqual(binary_tree.FinMinMax(FromNode=root, FindMax=True).NodeKey, 1)
         self.assertEqual(binary_tree.Count(), 1)
-        binary_tree.DeleteNodeByKey(1)
+        self.assertEqual(binary_tree.DeleteNodeByKey(1), True)
         self.assertEqual(binary_tree.Count(), 0)
         self.assertEqual(binary_tree.Root, None)
+        self.assertEqual(binary_tree.DeleteNodeByKey(1), False)
 
     def test_delete_node(self):
         binary_tree = BST(None)
