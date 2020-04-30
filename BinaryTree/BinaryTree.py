@@ -165,27 +165,27 @@ class BST:
         else:
             return False # если узел не найден
 
-    def Count(self, level=[], all_nodes=[]):
-        if not level:
-            level.append(self.Root)
-            all_nodes=[]
-            all_nodes.append(self.Root)
-        for node in level:
-            new_level = []
-            if node:
-                left_child = node.LeftChild
-                if left_child:
-                    new_level.append(left_child)
-                else:
-                    pass
-                right_child = node.RightChild
-                if right_child:
-                    new_level.append(right_child)
-                else:
-                    pass
+    def Count(self, node=None):
+        if node is None:
+            if self.Root is None:
+                return 0
             else:
-                pass
-        if new_level:
-            all_nodes.extend(new_level)
-            self.Count(new_level, all_nodes)
-        return len(all_nodes) # количество узлов в дереве
+                # Create an empty queue for level order traversal
+                queue = []
+                # Enqueue Root and initialize count
+                queue.append(self.Root)
+
+                count = 0 #initialize count for full nodes
+                while(len(queue) > 0):
+                    node = queue.pop(0)
+                    count += 1
+
+                    # Enqueue left child
+                    if node.LeftChild is not None:
+                        queue.append(node.LeftChild)
+
+                    # Enqueue right child
+                    if node.RightChild is not None:
+                        queue.append(node.RightChild)
+
+                return count

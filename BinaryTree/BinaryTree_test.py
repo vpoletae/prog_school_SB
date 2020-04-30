@@ -149,5 +149,25 @@ class Test_BinaryTree(unittest.TestCase):
         self.assertEqual(binary_tree.Root.NodeKey, 3)
         self.assertEqual(binary_tree.Count(), 3)
 
+    def test_count_zero(self):
+        binary_tree = BST(None)
+        self.assertEqual(binary_tree.Count(), 0)
+        add_1 = (1, 1)
+        binary_tree.AddKeyValue(add_1[0], add_1[1])
+        self.assertEqual(binary_tree.Count(), 1)
+        add_2 = (3, 3)
+        binary_tree.AddKeyValue(add_2[0], add_2[1])
+        self.assertEqual(binary_tree.Count(), 2)
+        binary_tree.DeleteNodeByKey(3)
+        self.assertEqual(binary_tree.Count(), 1)
+        binary_tree.DeleteNodeByKey(1)
+        self.assertEqual(binary_tree.Count(), 0)
+
+    def test_count_one(self):
+        binary_tree = BST(None)
+        add_1 = (1, 1)
+        binary_tree.AddKeyValue(add_1[0], add_1[1])
+        self.assertEqual(binary_tree.Count(), 1)
+
 if __name__ == '__main__':
     unittest.main()
