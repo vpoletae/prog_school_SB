@@ -67,6 +67,7 @@ class BST:
         else:
             root = BSTNode(key, val, None)
             self.Root = root
+        return True
 
     def FinMinMax(self, FromNode, FindMax):
         # ищем максимальное/минимальное (узел) в поддереве
