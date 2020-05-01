@@ -201,13 +201,7 @@ class BST:
             all_nodes = []
             while(len(queue) > 0):
                 node = queue.pop(0)
-                all_nodes.append((
-                    node.NodeKey,
-                    node.NodeValue,
-                    node.Parent,
-                    node.LeftChild,
-                    node.RightChild,
-                                ))
+                all_nodes.append(node)
 
                 if node.LeftChild is not None:
                     queue.append(node.LeftChild)
@@ -232,8 +226,7 @@ def inorder_traverse(node): # root
         return []
 
     return (inorder_traverse(node.LeftChild) + \
-            [(node.NodeKey, node.NodeValue, node.Parent, \
-            node.LeftChild, node.RightChild)] + \
+            [node] + \
             inorder_traverse(node.RightChild))
 
 def postorder_traverse(node):
@@ -242,16 +235,12 @@ def postorder_traverse(node):
 
     return (postorder_traverse(node.LeftChild) + \
             postorder_traverse(node.RightChild) + \
-            [(node.NodeKey, node.NodeValue, \
-            node.Parent, node.LeftChild, \
-            node.RightChild)])
+            [node])
 
 def preorder_traverse(node):
     if node is None:
         return []
 
-    return ([(node.NodeKey, node.NodeValue, \
-            node.Parent, node.LeftChild, \
-            node.RightChild)] + \
+    return ([node] + \
             preorder_traverse(node.LeftChild) + \
             preorder_traverse(node.RightChild))
