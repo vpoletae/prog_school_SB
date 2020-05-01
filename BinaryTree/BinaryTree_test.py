@@ -177,5 +177,78 @@ class Test_BinaryTree(unittest.TestCase):
         binary_tree.AddKeyValue(add_1[0], add_1[1])
         self.assertEqual(binary_tree.Count(), 1)
 
+    def test_wide_all_nodes(self):
+        binary_tree = BST(None)
+        self.assertEqual(binary_tree.WideAllNodes(), [])
+        add_1 = (1, 1)
+        binary_tree.AddKeyValue(add_1[0], add_1[1])
+        self.assertEqual(binary_tree.WideAllNodes()[0], (1, 1, None, None, None))
+        add_2 = (3, 3)
+        binary_tree.AddKeyValue(add_2[0], add_2[1])
+        node_2 = binary_tree.FindNodeByKey(3).Node
+        self.assertEqual(binary_tree.WideAllNodes()[0], (1, 1, None, None, node_2))
+        node_1 = binary_tree.FindNodeByKey(1).Node
+        self.assertEqual(binary_tree.WideAllNodes()[1], (3, 3, node_1, None, None))
+
+    def test_inorder_traverse(self):
+        binary_tree = BST(None)
+        add_1 = (1, 1)
+        add_2 = (3, 3)
+        add_3 = (2, 2)
+        add_4 = (4, 4)
+        binary_tree.AddKeyValue(add_1[0], add_1[1])
+        binary_tree.AddKeyValue(add_2[0], add_2[1])
+        binary_tree.AddKeyValue(add_3[0], add_3[1])
+        binary_tree.AddKeyValue(add_4[0], add_4[1])
+        node_1 = binary_tree.FindNodeByKey(1).Node
+        node_2 = binary_tree.FindNodeByKey(3).Node
+        node_3 = binary_tree.FindNodeByKey(2).Node
+        node_4 = binary_tree.FindNodeByKey(4).Node
+        inorder_traverse = binary_tree.DeepAllNodes(order=0)
+        self.assertEqual(inorder_traverse[0], (1, 1, None, None, node_2))
+        self.assertEqual(inorder_traverse[1], (2, 2, node_2, None, None))
+        self.assertEqual(inorder_traverse[2], (3, 3, node_1, node_3, node_4))
+        self.assertEqual(inorder_traverse[3], (4, 4, node_2, None, None))
+
+    def test_postorder_traverse(self):
+        binary_tree = BST(None)
+        add_1 = (1, 1)
+        add_2 = (3, 3)
+        add_3 = (2, 2)
+        add_4 = (4, 4)
+        binary_tree.AddKeyValue(add_1[0], add_1[1])
+        binary_tree.AddKeyValue(add_2[0], add_2[1])
+        binary_tree.AddKeyValue(add_3[0], add_3[1])
+        binary_tree.AddKeyValue(add_4[0], add_4[1])
+        node_1 = binary_tree.FindNodeByKey(1).Node
+        node_2 = binary_tree.FindNodeByKey(3).Node
+        node_3 = binary_tree.FindNodeByKey(2).Node
+        node_4 = binary_tree.FindNodeByKey(4).Node
+        postorder_traverse = binary_tree.DeepAllNodes(order=1)
+        self.assertEqual(postorder_traverse[0], (2, 2, node_2, None, None))
+        self.assertEqual(postorder_traverse[1], (4, 4, node_2, None, None))
+        self.assertEqual(postorder_traverse[2], (3, 3, node_1, node_3, node_4))
+        self.assertEqual(postorder_traverse[3], (1, 1, None, None, node_2))
+
+    def test_preorder_traverse(self):
+        binary_tree = BST(None)
+        add_1 = (1, 1)
+        add_2 = (3, 3)
+        add_3 = (2, 2)
+        add_4 = (4, 4)
+        binary_tree.AddKeyValue(add_1[0], add_1[1])
+        binary_tree.AddKeyValue(add_2[0], add_2[1])
+        binary_tree.AddKeyValue(add_3[0], add_3[1])
+        binary_tree.AddKeyValue(add_4[0], add_4[1])
+        node_1 = binary_tree.FindNodeByKey(1).Node
+        node_2 = binary_tree.FindNodeByKey(3).Node
+        node_3 = binary_tree.FindNodeByKey(2).Node
+        node_4 = binary_tree.FindNodeByKey(4).Node
+        preorder_traverse = binary_tree.DeepAllNodes(order=2)
+        self.assertEqual(preorder_traverse[0], (1, 1, None, None, node_2))
+        self.assertEqual(preorder_traverse[2], (2, 2, node_2, None, None))
+        self.assertEqual(preorder_traverse[3], (4, 4, node_2, None, None))
+        self.assertEqual(preorder_traverse[1], (3, 3, node_1, node_3, node_4))
+
 if __name__ == '__main__':
     unittest.main()

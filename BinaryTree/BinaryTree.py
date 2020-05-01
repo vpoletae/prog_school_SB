@@ -191,3 +191,67 @@ class BST:
                         queue.append(node.RightChild)
 
                 return count
+
+    def WideAllNodes(self):
+        if self.Root is None:
+            return []
+        else:
+            queue = []
+            queue.append(self.Root)
+            all_nodes = []
+            while(len(queue) > 0):
+                node = queue.pop(0)
+                all_nodes.append((
+                    node.NodeKey,
+                    node.NodeValue,
+                    node.Parent,
+                    node.LeftChild,
+                    node.RightChild,
+                                ))
+
+                if node.LeftChild is not None:
+                    queue.append(node.LeftChild)
+
+                if node.RightChild is not None:
+                    queue.append(node.RightChild)
+
+            return all_nodes
+
+    def DeepAllNodes(self, order):
+        all_nodes = []
+        if order == 0: # in-order
+            all_nodes = inorder_traverse(self.Root)
+        elif order == 1: # post-order
+            all_nodes = postorder_traverse(self.Root)
+        elif order == 2: # pre-order
+            all_nodes = preorder_traverse(self.Root)
+        return all_nodes
+
+def inorder_traverse(node): # root
+    if node is None:
+        return []
+
+    return (inorder_traverse(node.LeftChild) + \
+            [(node.NodeKey, node.NodeValue, node.Parent, \
+            node.LeftChild, node.RightChild)] + \
+            inorder_traverse(node.RightChild))
+
+def postorder_traverse(node):
+    if node is None:
+        return []
+
+    return (postorder_traverse(node.LeftChild) + \
+            postorder_traverse(node.RightChild) + \
+            [(node.NodeKey, node.NodeValue, \
+            node.Parent, node.LeftChild, \
+            node.RightChild)])
+
+def preorder_traverse(node):
+    if node is None:
+        return []
+
+    return ([(node.NodeKey, node.NodeValue, \
+            node.Parent, node.LeftChild, \
+            node.RightChild)] + \
+            preorder_traverse(node.LeftChild) + \
+            preorder_traverse(node.RightChild))
