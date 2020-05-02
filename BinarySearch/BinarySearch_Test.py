@@ -4,7 +4,7 @@ from BinarySearch import aBST
 class Test_BinaryTree(unittest.TestCase):
 
     def test_add_search(self):
-        binary_tree = aBST(6)
+        binary_tree = aBST(2)
         self.assertEqual(len(binary_tree.Tree), 7)
         self.assertEqual(binary_tree.AddKey(11), 0)
         self.assertEqual(binary_tree.FindKeyIndex(11), 0)
