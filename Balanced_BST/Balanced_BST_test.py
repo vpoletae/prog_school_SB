@@ -21,7 +21,7 @@ class Test_Balanced_BST(unittest.TestCase):
 
     def test_7_array(self):
         array = [3,2,1,4,5,6,7]
-        self.assertEqual(GenerateBBSTArray(array), [4,2,6,1,3,5,7])
+        self.assertEqual(GenerateBBSTArray(array), [4,2,1,3,6,5,7])
 
 if __name__ == '__main__':
     unittest.main()
