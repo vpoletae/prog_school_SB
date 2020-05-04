@@ -1,7 +1,7 @@
-import math
+# import math
 
 def GenerateBBSTArray(a):
-    depth = int(math.log((len(a) + 1), 2) - 1)
+    # depth = int(math.log((len(a) + 1), 2) - 1)
     if len(a) == 0:
         return []
     elif len(a) == 1:
