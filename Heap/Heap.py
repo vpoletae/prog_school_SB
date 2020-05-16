@@ -6,9 +6,9 @@ class Heap:
     def MakeHeap(self, a, depth):
 	    # создаём массив кучи HeapArray из заданного
         # размер массива выбираем на основе глубины depth
-        assert 2 ** depth - 1 >= len(a)
+        assert 2 ** (depth + 1) - 1 >= len(a)
         heap_size = 0
-        for i in range(depth):
+        for i in range(depth+1):
             heap_size += (2 ** i)
         self.HeapArray = [None] * heap_size
         if len(self.HeapArray) >= len(a):
