@@ -14,9 +14,10 @@ class SimpleGraph:
         # ваш код добавления новой вершины
         # с значением value
         # в свободное место массива vertex
+        vertex = Vertex(v)
         for i in range(self.max_vertex):
             if self.vertex[i] is None:
-                self.vertex[i] = v
+                self.vertex[i] = vertex
                 break
             else:
                 pass
