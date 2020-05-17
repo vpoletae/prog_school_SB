@@ -11,10 +11,22 @@ class Heap:
         for i in range(depth+1):
             heap_size += (2 ** i)
         self.HeapArray = [None] * heap_size
-        if len(self.HeapArray) >= len(a):
-            sorted_array = sorted(a, reverse=True)
-            for i in range(len(a)):
-                self.HeapArray[i] = sorted_array[i]
+        for i in a:
+            self.Add(i)
+
+
+        # def MakeHeap(self, a, depth):
+    	#     # создаём массив кучи HeapArray из заданного
+        #     # размер массива выбираем на основе глубины depth
+        #     assert 2 ** (depth + 1) - 1 >= len(a)
+        #     heap_size = 0
+        #     for i in range(depth+1):
+        #         heap_size += (2 ** i)
+        #     self.HeapArray = [None] * heap_size
+        #     if len(self.HeapArray) >= len(a):
+        #         sorted_array = sorted(a, reverse=True)
+        #         for i in range(len(a)):
+        #             self.HeapArray[i] = sorted_array[i]
 
     def GetMax(self):
         # вернуть значение корня и перестроить кучу
@@ -65,7 +77,7 @@ class Heap:
                             array[index] = right_child_val
                             array[right_index] = value
                             index = right_index
-                self.reorder_heap_up_down(array, value, index)
+                    self.reorder_heap_up_down(array, value, index)
 
     def Add(self, key):
 	    # добавляем новый элемент key в кучу и перестраиваем её
