@@ -9,7 +9,11 @@ class SimpleTreeNode:
 class SimpleTree:
 
     def __init__(self, root):
-        self.Root = root # корень, может быть None
+        if root is not None:
+            self.Root = root # корень, может быть None
+            root.Level = 0
+        else:
+            self.Root = root
 
     def AddChild(self, ParentNode, NewChild):
         if ParentNode: # not None:
