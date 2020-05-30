@@ -66,7 +66,8 @@ class SimpleGraph:
         if trigger == 0:
             stack = []
             for vertex in self.vertex:
-                vertex.Hit = False
+                if vertex is not None:
+                    vertex.Hit = False
             trigger = 1
         vertex = self.vertex[VFrom]
         vertex.Hit = True

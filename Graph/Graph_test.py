@@ -94,7 +94,7 @@ class Test_Graph(unittest.TestCase):
         self.assertEqual(graph.DepthFirstSearch(0, 2), [])
 
     def test_dfs_5(self):
-        graph = SimpleGraph(5)
+        graph = SimpleGraph(8)
         graph.AddVertex(1)
         graph.AddVertex(2)
         graph.AddVertex(3)
@@ -111,7 +111,7 @@ class Test_Graph(unittest.TestCase):
         self.assertEqual(path[3].Value, 5)
 
     def test_dfs_15(self):
-        graph = SimpleGraph(15)
+        graph = SimpleGraph(17)
         for i in range(1, 16):
             graph.AddVertex(i)
         graph.AddEdge(0, 1)
@@ -144,7 +144,7 @@ class Test_Graph(unittest.TestCase):
         self.assertEqual(path[2].Value, 5)
 
     def test_dfs_AE(self):
-        graph = SimpleGraph(5)
+        graph = SimpleGraph(6)
         graph.AddVertex('A')
         graph.AddVertex('B')
         graph.AddVertex('C')
