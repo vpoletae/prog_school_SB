@@ -176,6 +176,9 @@ class Test_Graph(unittest.TestCase):
         self.assertEqual(path[1].Value, 'B')
         self.assertEqual(path[2].Value, 'E')
         self.assertEqual(len(path), 3)
+        path = graph.DepthFirstSearch(0, 5)
+        self.assertEqual(len(path), 0)
+        self.assertEqual(path, [])
 
 if __name__ == '__main__':
     unittest.main()
