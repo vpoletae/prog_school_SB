@@ -88,7 +88,8 @@ class SimpleGraph:
 
             if adj_vertex != []:
                 for index in adj_vertex:
-                    self.DepthFirstSearch(index, VTo, stack, trigger)
+                    if not stack[-1] == self.vertex[VTo]:
+                        self.DepthFirstSearch(index, VTo, stack, trigger)
             else:
                 stack.pop(-1)
                 if stack == []:
