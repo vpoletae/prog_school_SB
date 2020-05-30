@@ -70,11 +70,11 @@ class SimpleGraph:
             trigger = 1
         vertex = self.vertex[VFrom]
         vertex.Hit = True
-        if VFrom not in stack:
-            stack.append(VFrom)
+        if vertex not in stack:
+            stack.append(vertex)
         adj_list = self.m_adjacency[VFrom]
-        if adj_list[VTo] == 1:
-            stack.append(VTo)
+        if adj_list[VTo] == 1: #adjust
+            stack.append(self.vertex[VTo])
         else:
             # get list of adjacent vertex indeces
             adj_vertex = []
@@ -87,13 +87,12 @@ class SimpleGraph:
 
             if adj_vertex != []:
                 for index in adj_vertex:
-                    if not stack[-1] == VTo:
-                        self.DepthFirstSearch(index, VTo, stack, trigger)
-                    else: pass
+                    self.DepthFirstSearch(index, VTo, stack, trigger)
             else:
                 stack.pop(-1)
                 if stack == []:
                     pass
                 else:
-                    self.DepthFirstSearch(stack[-1], VTo, stack, trigger)
+                    index = self.vertex.index(stack[-1])
+                    self.DepthFirstSearch(index, VTo, stack, trigger)
         return stack

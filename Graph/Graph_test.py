@@ -61,29 +61,29 @@ class Test_Graph(unittest.TestCase):
     #     self.assertEqual(graph.IsEdge(0, 1), False)
     #     self.assertEqual(graph.m_adjacency[0], [0, 0, 0])
     #     self.assertEqual(graph.m_adjacency[1], [0, 0, 0])
-    #
-    # def test_dfs_3(self):
-    #     graph = SimpleGraph(3)
-    #     graph.AddVertex(1)
-    #     graph.AddVertex(2)
-    #     graph.AddVertex(3)
-    #     graph.AddEdge(0, 1)
-    #     graph.AddEdge(0, 2)
-    #     self.assertEqual(graph.DepthFirstSearch(0, 1)[0].Value, 1)
-    #     self.assertEqual(graph.DepthFirstSearch(0, 1)[1].Value, 2)
-    #
-    # def test_dfs_line(self):
-    #     graph = SimpleGraph(3)
-    #     graph.AddVertex(1)
-    #     graph.AddVertex(2)
-    #     graph.AddVertex(3)
-    #     graph.AddEdge(0, 1)
-    #     graph.AddEdge(1, 2)
-    #     path = graph.DepthFirstSearch(0, 2)
-    #     self.assertEqual(path[0].Value, 1)
-    #     self.assertEqual(path[1].Value, 2)
-    #     self.assertEqual(path[2].Value, 3)
-    #
+
+    def test_dfs_3(self):
+        graph = SimpleGraph(3)
+        graph.AddVertex(1)
+        graph.AddVertex(2)
+        graph.AddVertex(3)
+        graph.AddEdge(0, 1)
+        graph.AddEdge(0, 2)
+        self.assertEqual(graph.DepthFirstSearch(0, 1)[0].Value, 1)
+        self.assertEqual(graph.DepthFirstSearch(0, 1)[1].Value, 2)
+
+    def test_dfs_line(self):
+        graph = SimpleGraph(3)
+        graph.AddVertex(1)
+        graph.AddVertex(2)
+        graph.AddVertex(3)
+        graph.AddEdge(0, 1)
+        graph.AddEdge(1, 2)
+        path = graph.DepthFirstSearch(0, 2)
+        self.assertEqual(path[0].Value, 1)
+        self.assertEqual(path[1].Value, 2)
+        self.assertEqual(path[2].Value, 3)
+
     def test_dfs_empty(self):
         graph = SimpleGraph(3)
         graph.AddVertex(1)
@@ -92,23 +92,23 @@ class Test_Graph(unittest.TestCase):
         graph.AddEdge(0, 1)
         # graph.AddEdge(1, 2)
         self.assertEqual(graph.DepthFirstSearch(0, 2), [])
-    #
-    # def test_dfs_5(self):
-    #     graph = SimpleGraph(5)
-    #     graph.AddVertex(1)
-    #     graph.AddVertex(2)
-    #     graph.AddVertex(3)
-    #     graph.AddVertex(4)
-    #     graph.AddVertex(5)
-    #     graph.AddEdge(0, 1)
-    #     graph.AddEdge(1, 2)
-    #     graph.AddEdge(1, 3)
-    #     graph.AddEdge(2, 4)
-    #     path = graph.DepthFirstSearch(0, 4)
-    #     self.assertEqual(path[0].Value, 1)
-    #     self.assertEqual(path[1].Value, 2)
-    #     self.assertEqual(path[2].Value, 3)
-    #     self.assertEqual(path[3].Value, 5)
+
+    def test_dfs_5(self):
+        graph = SimpleGraph(5)
+        graph.AddVertex(1)
+        graph.AddVertex(2)
+        graph.AddVertex(3)
+        graph.AddVertex(4)
+        graph.AddVertex(5)
+        graph.AddEdge(0, 1)
+        graph.AddEdge(1, 2)
+        graph.AddEdge(1, 3)
+        graph.AddEdge(2, 4)
+        path = graph.DepthFirstSearch(0, 4)
+        self.assertEqual(path[0].Value, 1)
+        self.assertEqual(path[1].Value, 2)
+        self.assertEqual(path[2].Value, 3)
+        self.assertEqual(path[3].Value, 5)
 
     def test_dfs_15(self):
         graph = SimpleGraph(15)
@@ -129,12 +129,19 @@ class Test_Graph(unittest.TestCase):
         graph.AddEdge(6, 13)
         graph.AddEdge(6, 14)
         path = graph.DepthFirstSearch(0, 14)
-        self.assertEqual(path, [0, 2, 6, 14])
+        self.assertEqual(path[0].Value, 1)
+        self.assertEqual(path[1].Value, 3)
+        self.assertEqual(path[2].Value, 7)
+        self.assertEqual(path[3].Value, 15)
         path = graph.DepthFirstSearch(0, 13)
-        self.assertEqual(path, [0, 2, 6, 13])
+        self.assertEqual(path[0].Value, 1)
+        self.assertEqual(path[1].Value, 3)
+        self.assertEqual(path[2].Value, 7)
+        self.assertEqual(path[3].Value, 14)
         path = graph.DepthFirstSearch(0, 4)
-        self.assertEqual(path, [0, 1, 4])
-
+        self.assertEqual(path[0].Value, 1)
+        self.assertEqual(path[1].Value, 2)
+        self.assertEqual(path[2].Value, 5)
 
 
 if __name__ == '__main__':
