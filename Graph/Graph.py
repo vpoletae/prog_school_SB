@@ -99,3 +99,32 @@ class SimpleGraph:
                     index = self.vertex.index(stack[-1])
                     self.DepthFirstSearch(index, VTo, stack, trigger)
         return stack
+
+    def BreadthFirstSearch(self, VFrom, VTo):
+        # узлы задаются позициями в списке vertex
+        # возвращается список узлов -- путь из VFrom в VTo
+        # или [] если пути нету
+        for vertex in self.vertex:
+            if vertex is not None:
+                vertex.Hit = False
+
+        queue = []
+        queue.append([VFrom])
+        while queue:
+            path = queue.pop(0)
+            node = path[-1]
+            self.vertex[node].Hit = True
+            if node == VTo:
+                path_nodes = []
+                for index in path:
+                    path_nodes.append(self.vertex[index])
+                return path_nodes
+            else:
+                adj_list = self.m_adjacency[node]
+                for i in range(len(adj_list)):
+                    if adj_list[i] == 1:
+                        if self.vertex[i].Hit == False:
+                            new_path = list(path)
+                            new_path.append(i)
+                            queue.append(new_path)
+        return []
