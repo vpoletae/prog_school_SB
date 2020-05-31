@@ -128,3 +128,29 @@ class SimpleGraph:
                             new_path.append(i)
                             queue.append(new_path)
         return []
+
+    def WeakVertices(self):
+        # возвращает список узлов вне треугольников
+        weak_vertices = []
+        node_index = 0
+        for adjacent in self.m_adjacency:
+            adj_index_list = []
+            for index in range(len(adjacent)):
+                if adjacent[index] == 1:
+                    adj_index_list.append(index)
+
+            if len(adj_index_list) < 2:
+                weak_vertices.append(self.vertex[node_index])
+            else:
+                edges = 0
+                for i in range(len(adj_index_list)):
+                    for j in adj_index_list:
+                        if self.m_adjacency[adj_index_list[i]][j] == 1:
+                            edges += 1
+                            break
+                        else:
+                            pass
+                if edges == 0:
+                    weak_vertices.append(self.vertex[node_index])
+            node_index += 1
+        return weak_vertices
