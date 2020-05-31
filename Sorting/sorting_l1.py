@@ -1,19 +1,14 @@
-def SelectionSortStep(array: list, index: int)-> list:
-    if index > len(array)-1:
-        return None
-    elif index == len(array)-1:
-        return array
-
-    prev = array[:index]
-    val = array[index]
-    post = array[index+1:]
-    min_val = min(post)
-    if min_val < val:
-        min_index = post.index(min_val)
-        post[min_index] = val
-        return prev + [min_val] + post
+def SelectionSortStep(array: list, index: int):
+    if index >= len(array)-1:
+        pass
     else:
-        return array
+        val = array[index]
+        post = array[index+1:]
+        min_val = min(post)
+        if min_val < val:
+            min_index = post.index(min_val) - len(post)
+            array[min_index] = val
+            array[index] = min_val
 
 def BubbleSortStep(array: list)-> bool:
     if len(array) <= 1:
