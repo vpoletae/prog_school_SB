@@ -52,9 +52,7 @@ def InsertionSortStep(array: list, step: int, index: int):
             array[pair[0]] = pair[1]
 
 def KnuthSequence(array_size: int)-> list:
-    if array_size == 0:
-        return []
-    elif array_size == 1:
+    if array_size <= 0:
         return [1]
     else:
         cur_elem = 1

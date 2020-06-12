@@ -81,7 +81,7 @@ class Test_sorting(unittest.TestCase):
     #     self.assertEqual(array, [1])
 
     def test_knuth_seq(self):
-        self.assertEqual(KnuthSequence(0), [])
+        self.assertEqual(KnuthSequence(0), [1])
         self.assertEqual(KnuthSequence(1), [1])
         self.assertEqual(KnuthSequence(15), [13, 4, 1])
         self.assertEqual(KnuthSequence(40), [40, 13, 4, 1])
