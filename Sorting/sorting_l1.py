@@ -50,3 +50,21 @@ def InsertionSortStep(array: list, step: int, index: int):
         index_value = list(zip(indexes, sorted(values)))
         for pair in index_value:
             array[pair[0]] = pair[1]
+
+def KnuthSequence(array_size: int)-> list:
+    if array_size == 0:
+        return []
+    elif array_size == 1:
+        return [1]
+    else:
+        cur_elem = 1
+        knuth_seq = [cur_elem]
+        next_elem = 3 * cur_elem + 1
+        if next_elem > array_size:
+            pass
+        else:
+            while not next_elem > array_size:
+                knuth_seq.insert(0, next_elem)
+                cur_elem = next_elem
+                next_elem = 3 * cur_elem + 1
+        return knuth_seq
