@@ -108,7 +108,7 @@ class Test_sorting(unittest.TestCase):
         array = [7, 5]
         index = ArrayChunk(array)
         self.assertEqual(array, [5, 7])
-        self.assertEqual(index, 1)
+        self.assertEqual(index, 0)
 
     def test_array_chunk_3(self):
         array = [3,2,1]
@@ -118,23 +118,29 @@ class Test_sorting(unittest.TestCase):
         array = [3,1,2]
         index = ArrayChunk(array)
         self.assertEqual(array, [1,2,3])
-        self.assertEqual(index, 1)
+        self.assertEqual(index, 0)
         array = [1,3,2]
         index = ArrayChunk(array)
         self.assertEqual(array, [1,2,3])
-        self.assertEqual(index, 1)
+        self.assertEqual(index, 2)
 
     def test_array_chunk_4(self):
         array = [3,2,1,4]
         index = ArrayChunk(array)
         self.assertEqual(array, [1,2,3,4])
-        self.assertEqual(index, 2)
+        self.assertEqual(index, 0)
 
     def test_array_chunk_4(self):
         array = [3,2,2,2]
         index = ArrayChunk(array)
         self.assertEqual(array, [2,2,2,3])
         self.assertEqual(index, 2)
+
+    def test_array_chunk_3(self):
+        array = [1,3,4,6,5,2,8]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [1,3,4,2,5,6,8])
+        self.assertEqual(index, 5)
 
 if __name__ == '__main__':
     unittest.main()

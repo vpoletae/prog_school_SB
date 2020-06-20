@@ -67,7 +67,7 @@ def KnuthSequence(array_size: int)-> list:
                 next_elem = 3 * cur_elem + 1
         return knuth_seq
 
-def ArrayChunk(array: list)-> int:
+def ArrayChunk(array: list, pivot_i=None, i1=None)-> int:
     if len(array) == 0:
         return None
     elif len(array) == 1:
@@ -79,11 +79,14 @@ def ArrayChunk(array: list)-> int:
             array[0] = lower
         else:
             pass
-        return 1
+        return 0
     else:
-        pivot_i = int(len(array)/2)
+        if pivot_i is None:
+            pivot_i = int(len(array)/2)
+            i1 = 0
+        else:
+            pass
         pivot_v = array[pivot_i]
-        i1 = 0
         i2 = len(array)-1
 
         while array[i1] < pivot_v:
@@ -92,16 +95,20 @@ def ArrayChunk(array: list)-> int:
             i2 -= 1
 
         if array[i1] > array[i2]:
+            if i1 == pivot_i:
+                pivot_i = i2
+            elif i2 == pivot_i:
+                pivot_i = i1
             exch = array[i1]
             array[i1] = array[i2]
             array[i2] = exch
-            ArrayChunk(array)
+            ArrayChunk(array, pivot_i, i1)
 
         if i1 == i2-1 and array[i1] > array[i2]:
             exch = array[i1]
             array[i1] = array[i2]
             array[i2] = exch
-            ArrayChunk(array)
+            ArrayChunk(array, pivot_i, i1)
         elif i1 == i2 or (i1 == i2-1 and array[i1] < array[i2]):
             if array[i1] >= pivot_v and array[i2] <= pivot_v:
                 exch = array[i1]
