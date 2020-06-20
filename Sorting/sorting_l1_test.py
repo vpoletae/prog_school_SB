@@ -80,11 +80,61 @@ class Test_sorting(unittest.TestCase):
     #     InsertionSortStep(array, 2, 1 )
     #     self.assertEqual(array, [1])
 
-    def test_knuth_seq(self):
-        self.assertEqual(KnuthSequence(0), [1])
-        self.assertEqual(KnuthSequence(1), [1])
-        self.assertEqual(KnuthSequence(15), [13, 4, 1])
-        self.assertEqual(KnuthSequence(40), [40, 13, 4, 1])
+    # def test_knuth_seq(self):
+    #     self.assertEqual(KnuthSequence(0), [1])
+    #     self.assertEqual(KnuthSequence(1), [1])
+    #     self.assertEqual(KnuthSequence(15), [13, 4, 1])
+    #     self.assertEqual(KnuthSequence(40), [40, 13, 4, 1])
+
+    def test_array_chunk_base(self):
+        array = [7,5,6,4,3,1,2]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [2,1,3,4,6,5,7])
+        self.assertEqual(index, 3)
+
+    def test_array_chunk_empty(self):
+        array = []
+        index = ArrayChunk(array)
+        self.assertEqual(array, [])
+        self.assertEqual(index, None)
+
+    def test_array_chunk_unit(self):
+        array = [1]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [1])
+        self.assertEqual(index, 0)
+
+    def test_array_chunk_two(self):
+        array = [7, 5]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [5, 7])
+        self.assertEqual(index, 1)
+
+    def test_array_chunk_3(self):
+        array = [3,2,1]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [1,2,3])
+        self.assertEqual(index, 1)
+        array = [3,1,2]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [1,2,3])
+        self.assertEqual(index, 1)
+        array = [1,3,2]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [1,2,3])
+        self.assertEqual(index, 1)
+
+    def test_array_chunk_4(self):
+        array = [3,2,1,4]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [1,2,3,4])
+        self.assertEqual(index, 2)
+
+    def test_array_chunk_4(self):
+        array = [3,2,2,2]
+        index = ArrayChunk(array)
+        self.assertEqual(array, [2,2,2,3])
+        self.assertEqual(index, 2)
 
 if __name__ == '__main__':
     unittest.main()
